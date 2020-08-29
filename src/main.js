@@ -59,6 +59,8 @@ function showForm() {
 
 function showSavedCovers() {
   savedView.classList.remove("hidden");
+  formView.classList.add("hidden");
+  viewSavedButton.classList.add("hidden");
   hideHome();
 }
 
