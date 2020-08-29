@@ -114,19 +114,19 @@ function saveCover() {
 
 function formatSavedCovers() {
   var miniCover =
-  `<div class="mini-cover" data-id="${currentCover.id}"><img class="mini-cover" src="${currentCover.cover}"><h2 class="cover-title first-letter">${currentCover.title}</h2><h3 class="tagline">A tale of ${currentCover.tagline1} and ${currentCover.tagline2}</h3></div>`
+  `<div class="mini-covers mini-cover" data-id="${currentCover.id}"><img class="mini-cover" src="${currentCover.cover}"><h2 class="cover-title first-letter">${currentCover.title}</h2><h3 class="tagline">A tale of ${currentCover.tagline1} and ${currentCover.tagline2}</h3></div>`
   savedCoversSection.insertAdjacentHTML('afterbegin', miniCover);
 }
 
 function removeSavedCover() {
-  var clickedMiniCover = event.target.closest(".mini-cover")
+  var clickedMiniCover = event.target.closest(".mini-covers")
   console.log(clickedMiniCover);
   console.log(clickedMiniCover.dataset.id);
-  for (var i = 0; i < savedCovers.length; i++) {
-    if (clickedMiniCover.dataset.id === savedCovers[i].id) {
-      console.log("Hello")
-    }
-  }
+  // for (var i = 0; i < savedCovers.length; i++) {
+  //   if (clickedMiniCover.dataset.id === savedCovers[i].id) {
+  //     console.log("Hello")
+  //   }
+  // }
 }
 
 //eventListener on double click invoking function
