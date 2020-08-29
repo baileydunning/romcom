@@ -54,20 +54,28 @@ function displayNewCover(cover) {
 
 function showForm() {
   formView.classList.remove("hidden");
+  viewSavedButton.classList.remove("hidden");
+  savedView.classList.add("hidden");
+  makeNewButton.classList.add("hidden");
   hideHome();
   }
 
 function showSavedCovers() {
   savedView.classList.remove("hidden");
+  makeNewButton.classList.remove("hidden");
+  formView.classList.add("hidden");
+  viewSavedButton.classList.add("hidden");
   hideHome();
 }
 
 function showHome() {
+  randomizeButton.classList.remove("hidden");
+  saveCoverButton.classList.remove("hidden");
+  viewSavedButton.classList.remove("hidden");
+  makeNewButton.classList.remove("hidden");
   homeView.classList.remove("hidden");
   formView.classList.add("hidden");
   savedView.classList.add("hidden");
-  randomizeButton.classList.remove("hidden");
-  saveCoverButton.classList.remove("hidden");
   homeButton.classList.add("hidden");
 }
 
