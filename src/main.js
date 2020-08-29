@@ -1,4 +1,3 @@
-// Create variables targetting the relevant DOM elements here 👇
 var coverTitle = document.querySelector('.cover-title');
 var coverImage = document.querySelector('.cover-image');
 var tagline1 = document.querySelector('.tagline-1');
@@ -20,12 +19,10 @@ var userTitle = document.querySelector('.user-title');
 var userDesc1 = document.querySelector('.user-desc1');
 var userDesc2 = document.querySelector('.user-desc2');
 
-// We've provided a few variables below
 var savedCovers = [];
 var currentCover;
 var randomCover = getRandomIndex(covers);
 
-// Add your event listeners here 👇
 window.addEventListener("load", createRandomCover);
 randomizeButton.addEventListener("click", createRandomCover);
 makeNewButton.addEventListener("click", showForm);
@@ -34,8 +31,6 @@ homeButton.addEventListener("click", showHome);
 createNewBookButton.addEventListener("click", createUserCover);
 saveCoverButton.addEventListener("click", saveCover);
 savedCoversSection.addEventListener("dblclick", unsaveCover);
-
-// Create your event handlers and other functions here 👇
 
 function createRandomCover() {
   var randomCoverImage = getRandomIndex(covers);
@@ -132,13 +127,6 @@ function removeMiniCover(cover) {
   cover.remove();
 }
 
-//eventListener on double click invoking function
-// if
-//removes cover object from savedCovers array
-//removes what was clicked from view
-
-
-// We've provided one function to get you started
 function getRandomIndex(array) {
   var randomIndex = Math.floor(Math.random() * array.length);
   return array[randomIndex];
