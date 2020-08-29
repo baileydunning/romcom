@@ -33,7 +33,7 @@ viewSavedButton.addEventListener("click", showSavedCovers);
 homeButton.addEventListener("click", showHome);
 createNewBookButton.addEventListener("click", createUserCover);
 saveCoverButton.addEventListener("click", saveCover);
-savedCoversSection.addEventListener("dblclick", removeSavedCover);
+savedCoversSection.addEventListener("dblclick", unsaveCover);
 
 // Create your event handlers and other functions here 👇
 
@@ -114,19 +114,22 @@ function saveCover() {
 
 function formatSavedCovers() {
   var miniCover =
-  `<div class="mini-covers mini-cover" data-id="${currentCover.id}"><img class="mini-cover" src="${currentCover.cover}"><h2 class="cover-title first-letter">${currentCover.title}</h2><h3 class="tagline">A tale of ${currentCover.tagline1} and ${currentCover.tagline2}</h3></div>`
+  `<div class="entire-mini-cover mini-cover" data-id="${currentCover.id}"><img class="mini-cover" src="${currentCover.cover}"><h2 class="cover-title first-letter">${currentCover.title}</h2><h3 class="tagline">A tale of ${currentCover.tagline1} and ${currentCover.tagline2}</h3></div>`
   savedCoversSection.insertAdjacentHTML('afterbegin', miniCover);
 }
 
-function removeSavedCover() {
-  var clickedMiniCover = event.target.closest(".mini-covers")
-  console.log(clickedMiniCover);
-  console.log(clickedMiniCover.dataset.id);
-  // for (var i = 0; i < savedCovers.length; i++) {
-  //   if (clickedMiniCover.dataset.id === savedCovers[i].id) {
-  //     console.log("Hello")
-  //   }
-  // }
+function unsaveCover() {
+  var clickedMiniCover = event.target.closest(".entire-mini-cover")
+  for (var i = 0; i < savedCovers.length; i++) {
+    if (clickedMiniCover.dataset.id == `${savedCovers[i].id}`) {
+      savedCovers.splice(i, 1);
+      removeMiniCover(clickedMiniCover);
+    }
+  }
+}
+
+function removeMiniCover(cover) {
+  cover.remove();
 }
 
 //eventListener on double click invoking function
