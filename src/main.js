@@ -31,8 +31,9 @@ randomizeButton.addEventListener("click", createRandomCover);
 makeNewButton.addEventListener("click", showForm);
 viewSavedButton.addEventListener("click", showSavedCovers);
 homeButton.addEventListener("click", showHome);
-createNewBookButton.addEventListener("click", createUserCover)
-saveCoverButton.addEventListener("click", saveCover)
+createNewBookButton.addEventListener("click", createUserCover);
+saveCoverButton.addEventListener("click", saveCover);
+savedCoversSection.addEventListener("dblclick", removeCover);
 
 // Create your event handlers and other functions here 👇
 
@@ -113,9 +114,24 @@ function saveCover() {
 
 function formatSavedCovers() {
   var miniCover =
-  `<div class="mini-cover"><img class="mini-cover" src="${currentCover.cover}"><h2 class="cover-title first-letter">${currentCover.title}</h2><h3 class="tagline">A tale of ${currentCover.tagline1} and ${currentCover.tagline2}</h3></div>`
+  `<div class="mini-cover"><id class="hidden">${currentCover.id}</id><img class="mini-cover" src="${currentCover.cover}"><h2 class="cover-title first-letter">${currentCover.title}</h2><h3 class="tagline">A tale of ${currentCover.tagline1} and ${currentCover.tagline2}</h3></div>`
   savedCoversSection.insertAdjacentHTML('afterbegin', miniCover);
 }
+
+function removeCover() {
+  var clickedMiniCover = event.target.closest(".mini-cover")
+  console.log(clickedMiniCover);
+  for (var i = 0; i < savedCovers.length; i++) {
+    if (clickedMiniCover.id == savedCovers[i].id) {
+      console.log(hello);
+    }
+  }
+}
+
+//eventListener on double click invoking function
+// if
+//removes cover object from savedCovers array
+//removes what was clicked from view
 
 
 // We've provided one function to get you started
