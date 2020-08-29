@@ -54,6 +54,9 @@ function displayNewCover(cover) {
 
 function showForm() {
   formView.classList.remove("hidden");
+  savedView.classList.add("hidden");
+  viewSavedButton.classList.remove("hidden");
+  makeNewButton.classList.add("hidden");
   hideHome();
   }
 
