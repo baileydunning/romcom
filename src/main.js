@@ -14,16 +14,14 @@ var createNewBookButton = document.querySelector('.create-new-book-button');
 var homeView = document.querySelector('.home-view');
 var formView = document.querySelector('.form-view');
 var savedView = document.querySelector('.saved-view');
-
+var savedCoversSection = document.querySelector('.saved-covers-section');
 var userCover = document.querySelector('.user-cover');
 var userTitle = document.querySelector('.user-title');
 var userDesc1 = document.querySelector('.user-desc1');
 var userDesc2 = document.querySelector('.user-desc2');
 
 // We've provided a few variables below
-var savedCovers = [
-  new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
-];
+var savedCovers = [];
 var currentCover;
 var randomCover = getRandomIndex(covers);
 
@@ -34,6 +32,7 @@ makeNewButton.addEventListener("click", showForm);
 viewSavedButton.addEventListener("click", showSavedCovers);
 homeButton.addEventListener("click", showHome);
 createNewBookButton.addEventListener("click", createUserCover)
+saveCoverButton.addEventListener("click", saveCover)
 
 // Create your event handlers and other functions here 👇
 
@@ -97,14 +96,22 @@ function saveUserInputs(cover) {
   descriptors.splice(0, 0, cover.tagline1, cover.tagline2);
 }
 
+function saveCover() {
+  if (!savedCovers.includes(currentCover)) {
+    savedCovers.push(currentCover);
+    formatSavedCovers();
+  }
+}
+
+function formatSavedCovers() {
+  var miniCover =
+  `<div class="mini-cover"><img class="mini-cover" src="${currentCover.cover}"><h2 class="cover-title first-letter">${currentCover.title}</h2><h3 class="tagline">A tale of ${currentCover.tagline1} and ${currentCover.tagline2}</h3></div>`
+  savedCoversSection.insertAdjacentHTML('afterbegin', miniCover);
+}
+
+
 // We've provided one function to get you started
 function getRandomIndex(array) {
   var randomIndex = Math.floor(Math.random() * array.length);
   return array[randomIndex];
 }
-
-
-//create new instance of cover class that takes in arguments of user inputs
-//push user inputs into data.js arrays
-//toggle views.
-//show created poster.
