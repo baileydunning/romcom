@@ -2,14 +2,12 @@ var coverTitle = document.querySelector('.cover-title');
 var coverImage = document.querySelector('.cover-image');
 var tagline1 = document.querySelector('.tagline-1');
 var tagline2 = document.querySelector('.tagline-2');
-
 var randomizeButton = document.querySelector('.random-cover-button');
 var makeNewButton = document.querySelector('.make-new-button');
 var saveCoverButton = document.querySelector('.save-cover-button');
 var homeButton = document.querySelector('.home-button');
 var viewSavedButton = document.querySelector('.view-saved-button');
 var createNewBookButton = document.querySelector('.create-new-book-button');
-
 var homeView = document.querySelector('.home-view');
 var formView = document.querySelector('.form-view');
 var savedView = document.querySelector('.saved-view');
@@ -21,7 +19,6 @@ var userDesc2 = document.querySelector('.user-desc2');
 
 var savedCovers = [];
 var currentCover;
-var randomCover = getRandomIndex(covers);
 
 window.addEventListener("load", createRandomCover);
 randomizeButton.addEventListener("click", createRandomCover);
@@ -31,6 +28,11 @@ homeButton.addEventListener("click", showHome);
 createNewBookButton.addEventListener("click", createUserCover);
 saveCoverButton.addEventListener("click", saveCover);
 savedCoversSection.addEventListener("dblclick", unsaveCover);
+
+function getRandomIndex(array) {
+  var randomIndex = Math.floor(Math.random() * array.length);
+  return array[randomIndex];
+}
 
 function createRandomCover() {
   var randomCoverImage = getRandomIndex(covers);
@@ -125,9 +127,4 @@ function unsaveCover() {
 
 function removeMiniCover(cover) {
   cover.remove();
-}
-
-function getRandomIndex(array) {
-  var randomIndex = Math.floor(Math.random() * array.length);
-  return array[randomIndex];
 }
