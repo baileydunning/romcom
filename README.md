@@ -28,7 +28,8 @@ This was a paired project where we built out a RomCom book cover generator. It g
 * A user can create their own customized cover by inserting information into the form
 * A user can temporarily save covers to the Saved Covers view by clicking "Save Cover"
 * A user can view Saved Covers and delete them permanently via double click on the cover
-(![ezgif-4-249a752e9dc6](https://user-images.githubusercontent.com/67710155/91666216-47573100-eab8-11ea-82b4-177b437f7dca.gif)
+
+![ezgif-4-249a752e9dc6](https://user-images.githubusercontent.com/67710155/91666216-47573100-eab8-11ea-82b4-177b437f7dca.gif)
 
 ## Programming Languages Uses
 * JavaScript
