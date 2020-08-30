@@ -165,8 +165,3 @@ form > button:hover {
   background: #e07999;
   color: white;
 }
-
-.field-required:invalid + .create-new-book-button {
-  background-color: yellow;
-  opacity: .5;
-}

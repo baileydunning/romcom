@@ -8,6 +8,7 @@ var saveCoverButton = document.querySelector('.save-cover-button');
 var homeButton = document.querySelector('.home-button');
 var viewSavedButton = document.querySelector('.view-saved-button');
 var createNewBookButton = document.querySelector('.create-new-book-button');
+var errorButton = document.querySelector('.error-button');
 var homeView = document.querySelector('.home-view');
 var formView = document.querySelector('.form-view');
 var savedView = document.querySelector('.saved-view');
@@ -26,6 +27,7 @@ makeNewButton.addEventListener("click", showForm);
 viewSavedButton.addEventListener("click", showSavedCovers);
 homeButton.addEventListener("click", showHome);
 createNewBookButton.addEventListener("click", createUserCover);
+errorButton.addEventListener('click', showError);
 saveCoverButton.addEventListener("click", saveCover);
 savedCoversSection.addEventListener("dblclick", unsaveCover);
 userCover.addEventListener("keyup", validateForm);
@@ -102,10 +104,17 @@ function createUserCover() {
 
 function validateForm() {
   if (userCover.value !== "" && userTitle.value !== "" && userDesc1.value !== "" && userDesc2.value !== "") {
-    createNewBookButton.classList.remove("hidden")
+    createNewBookButton.classList.remove('hidden')
+    errorButton.classList.add('hidden')
   } else {
-    createNewBookButton.classList.add("hidden")
+    createNewBookButton.classList.add('hidden')
+    errorButton.classList.remove('hidden')
   }
+}
+
+function showError() {
+  event.preventDefault();
+  alert('You must fill out all fields')
 }
 
 function saveUserInputs(cover) {
