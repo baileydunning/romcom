@@ -1,16 +1,14 @@
-// Create variables targetting the relevant DOM elements here 👇
 var coverTitle = document.querySelector('.cover-title');
 var coverImage = document.querySelector('.cover-image');
 var tagline1 = document.querySelector('.tagline-1');
 var tagline2 = document.querySelector('.tagline-2');
-
 var randomizeButton = document.querySelector('.random-cover-button');
 var makeNewButton = document.querySelector('.make-new-button');
 var saveCoverButton = document.querySelector('.save-cover-button');
 var homeButton = document.querySelector('.home-button');
 var viewSavedButton = document.querySelector('.view-saved-button');
 var createNewBookButton = document.querySelector('.create-new-book-button');
-
+var errorButton = document.querySelector('.error-button');
 var homeView = document.querySelector('.home-view');
 var formView = document.querySelector('.form-view');
 var savedView = document.querySelector('.saved-view');
@@ -20,22 +18,27 @@ var userTitle = document.querySelector('.user-title');
 var userDesc1 = document.querySelector('.user-desc1');
 var userDesc2 = document.querySelector('.user-desc2');
 
-// We've provided a few variables below
 var savedCovers = [];
 var currentCover;
-var randomCover = getRandomIndex(covers);
 
-// Add your event listeners here 👇
 window.addEventListener("load", createRandomCover);
 randomizeButton.addEventListener("click", createRandomCover);
 makeNewButton.addEventListener("click", showForm);
 viewSavedButton.addEventListener("click", showSavedCovers);
 homeButton.addEventListener("click", showHome);
 createNewBookButton.addEventListener("click", createUserCover);
+errorButton.addEventListener('click', showError);
 saveCoverButton.addEventListener("click", saveCover);
 savedCoversSection.addEventListener("dblclick", unsaveCover);
+userCover.addEventListener("keyup", validateForm);
+userTitle.addEventListener("keyup", validateForm);
+userDesc1.addEventListener("keyup", validateForm);
+userDesc2.addEventListener("keyup", validateForm);
 
-// Create your event handlers and other functions here 👇
+function getRandomIndex(array) {
+  var randomIndex = Math.floor(Math.random() * array.length);
+  return array[randomIndex];
+}
 
 function createRandomCover() {
   var randomCoverImage = getRandomIndex(covers);
@@ -99,6 +102,21 @@ function createUserCover() {
   showHome();
 }
 
+function validateForm() {
+  if (userCover.value !== "" && userTitle.value !== "" && userDesc1.value !== "" && userDesc2.value !== "") {
+    createNewBookButton.classList.remove('hidden')
+    errorButton.classList.add('hidden')
+  } else {
+    createNewBookButton.classList.add('hidden')
+    errorButton.classList.remove('hidden')
+  }
+}
+
+function showError() {
+  event.preventDefault();
+  alert('You must fill out all fields')
+}
+
 function saveUserInputs(cover) {
   covers.unshift(cover.cover);
   titles.unshift(cover.title);
@@ -130,16 +148,4 @@ function unsaveCover() {
 
 function removeMiniCover(cover) {
   cover.remove();
-}
-
-//eventListener on double click invoking function
-// if
-//removes cover object from savedCovers array
-//removes what was clicked from view
-
-
-// We've provided one function to get you started
-function getRandomIndex(array) {
-  var randomIndex = Math.floor(Math.random() * array.length);
-  return array[randomIndex];
 }

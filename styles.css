@@ -35,6 +35,7 @@ body {
 .controls > button:hover {
   background: #e07999;
   color: white;
+  cursor: alias;
 }
 
 /* ~~~~~~~~~~~~~~ HOME ~~~~~~~~~~~~~~~~ */
@@ -163,4 +164,8 @@ form > button {
 form > button:hover {
   background: #e07999;
   color: white;
+}
+
+.error-button {
+  opacity: .5;
 }
