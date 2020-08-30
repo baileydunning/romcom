@@ -28,6 +28,10 @@ homeButton.addEventListener("click", showHome);
 createNewBookButton.addEventListener("click", createUserCover);
 saveCoverButton.addEventListener("click", saveCover);
 savedCoversSection.addEventListener("dblclick", unsaveCover);
+userCover.addEventListener("keyup", validateForm);
+userTitle.addEventListener("keyup", validateForm);
+userDesc1.addEventListener("keyup", validateForm);
+userDesc2.addEventListener("keyup", validateForm);
 
 function getRandomIndex(array) {
   var randomIndex = Math.floor(Math.random() * array.length);
@@ -94,6 +98,14 @@ function createUserCover() {
   saveUserInputs(currentCover);
   displayNewCover(currentCover);
   showHome();
+}
+
+function validateForm() {
+  if (userCover.value !== "" && userTitle.value !== "" && userDesc1.value !== "" && userDesc2.value !== "") {
+    createNewBookButton.classList.remove("hidden")
+  } else {
+    createNewBookButton.classList.add("hidden")
+  }
 }
 
 function saveUserInputs(cover) {
