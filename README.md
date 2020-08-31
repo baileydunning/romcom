@@ -40,6 +40,7 @@ This was a paired project where we built out a RomCom book cover generator. It g
 * [Bailey Dunning](https://github.com/baileydunning)
 * [JP Carey](https://github.com/jaypeasee)
 * [David Becker (code review)](https://github.com/davidbecker6081)
+* [Kaitlin Davis (code review)](https://github.com/NiltiakSivad)
 * [Hannah Hudson (project manager)](https://github.com/hannahhch)
 
 ## Additional Links
