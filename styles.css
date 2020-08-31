@@ -134,6 +134,18 @@ body {
   padding: 5px;
 }
 
+@media(max-width: 1000px) {
+  .mini-cover > .cover-title {
+    font-size: 20px;
+  }
+  .mini-cover > .cover-title::first-letter {
+    font-size: 40px;
+  }
+  .mini-cover > .tagline {
+    font-size: 6px;
+  }
+}
+
 /* ~~~~~~~~~~~~~ NEW COVER FORM ~~~~~~~~~~~~~~~ */
 form {
   display: flex;
