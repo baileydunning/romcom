@@ -18,8 +18,10 @@ var userTitle = document.querySelector('.user-title');
 var userDesc1 = document.querySelector('.user-desc1');
 var userDesc2 = document.querySelector('.user-desc2');
 
+
 var savedCovers = [];
 var currentCover;
+
 
 window.addEventListener('load', createRandomCover);
 randomizeButton.addEventListener('click', createRandomCover);
@@ -35,10 +37,6 @@ errorButton.addEventListener('click', showError);
 saveCoverButton.addEventListener('click', saveCover);
 savedCoversSection.addEventListener('dblclick', unsaveCover);
 
-function getRandomIndex(array) {
-  var randomIndex = Math.floor(Math.random() * array.length);
-  return array[randomIndex];
-}
 
 function createRandomCover() {
   var randomCoverImage = getRandomIndex(covers);
@@ -47,6 +45,11 @@ function createRandomCover() {
   var randomTagline2 = getRandomIndex(descriptors);
   currentCover = new Cover(randomCoverImage, randomTitle, randomTagline1, randomTagline2);
   displayNewCover(currentCover);
+}
+
+function getRandomIndex(array) {
+  var randomIndex = Math.floor(Math.random() * array.length);
+  return array[randomIndex];
 }
 
 function displayNewCover(cover) {
@@ -92,17 +95,17 @@ function hideHome() {
 
 function validateForm() {
   if (userCover.value !== '' && userTitle.value !== '' && userDesc1.value !== '' && userDesc2.value !== '') {
-    createNewBookButton.classList.remove('hidden')
-    errorButton.classList.add('hidden')
+    createNewBookButton.classList.remove('hidden');
+    errorButton.classList.add('hidden');
   } else {
-    createNewBookButton.classList.add('hidden')
-    errorButton.classList.remove('hidden')
+    errorButton.classList.remove('hidden');
+    createNewBookButton.classList.add('hidden');
   }
 }
 
 function showError() {
   event.preventDefault();
-  alert('You must fill out all fields!')
+  alert('You must fill out all fields!');
 }
 
 function createUserCover() {
@@ -114,6 +117,7 @@ function createUserCover() {
   currentCover = new Cover(inputCoverImage, inputTitle, inputTagline1, inputTagline2);
   saveUserInputs(currentCover);
   displayNewCover(currentCover);
+  clearInputs();
   showHome();
 }
 
@@ -121,6 +125,13 @@ function saveUserInputs(cover) {
   covers.unshift(cover.cover);
   titles.unshift(cover.title);
   descriptors.splice(0, 0, cover.tagline1, cover.tagline2);
+}
+
+function clearInputs() {
+  userCover.value = '';
+  userTitle.value = '';
+  userDesc1.value = '';
+  userDesc2.value = '';
 }
 
 function saveCover() {
