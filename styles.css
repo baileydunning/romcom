@@ -141,10 +141,8 @@ body {
   .mini-cover > .cover-title::first-letter {
     font-size: 40px;
   }
-  .mini-cover > .tagline {
-    font-size: 6px;
-  }
 }
+
 
 /* ~~~~~~~~~~~~~ NEW COVER FORM ~~~~~~~~~~~~~~~ */
 form {
