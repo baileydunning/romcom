@@ -21,19 +21,19 @@ var userDesc2 = document.querySelector('.user-desc2');
 var savedCovers = [];
 var currentCover;
 
-window.addEventListener("load", createRandomCover);
-randomizeButton.addEventListener("click", createRandomCover);
-makeNewButton.addEventListener("click", showForm);
-viewSavedButton.addEventListener("click", showSavedCovers);
-homeButton.addEventListener("click", showHome);
-createNewBookButton.addEventListener("click", createUserCover);
+window.addEventListener('load', createRandomCover);
+randomizeButton.addEventListener('click', createRandomCover);
+makeNewButton.addEventListener('click', showForm);
+viewSavedButton.addEventListener('click', showSavedCovers);
+homeButton.addEventListener('click', showHome);
+userCover.addEventListener('keyup', validateForm);
+userTitle.addEventListener('keyup', validateForm);
+userDesc1.addEventListener('keyup', validateForm);
+userDesc2.addEventListener('keyup', validateForm);
+createNewBookButton.addEventListener('click', createUserCover);
 errorButton.addEventListener('click', showError);
-saveCoverButton.addEventListener("click", saveCover);
-savedCoversSection.addEventListener("dblclick", unsaveCover);
-userCover.addEventListener("keyup", validateForm);
-userTitle.addEventListener("keyup", validateForm);
-userDesc1.addEventListener("keyup", validateForm);
-userDesc2.addEventListener("keyup", validateForm);
+saveCoverButton.addEventListener('click', saveCover);
+savedCoversSection.addEventListener('dblclick', unsaveCover);
 
 function getRandomIndex(array) {
   var randomIndex = Math.floor(Math.random() * array.length);
@@ -57,37 +57,52 @@ function displayNewCover(cover) {
 }
 
 function showForm() {
-  formView.classList.remove("hidden");
-  viewSavedButton.classList.remove("hidden");
-  savedView.classList.add("hidden");
-  makeNewButton.classList.add("hidden");
+  formView.classList.remove('hidden');
+  viewSavedButton.classList.remove('hidden');
+  savedView.classList.add('hidden');
+  makeNewButton.classList.add('hidden');
   hideHome();
   }
 
 function showSavedCovers() {
-  savedView.classList.remove("hidden");
-  makeNewButton.classList.remove("hidden");
-  formView.classList.add("hidden");
-  viewSavedButton.classList.add("hidden");
+  savedView.classList.remove('hidden');
+  makeNewButton.classList.remove('hidden');
+  formView.classList.add('hidden');
+  viewSavedButton.classList.add('hidden');
   hideHome();
 }
 
 function showHome() {
-  randomizeButton.classList.remove("hidden");
-  saveCoverButton.classList.remove("hidden");
-  viewSavedButton.classList.remove("hidden");
-  makeNewButton.classList.remove("hidden");
-  homeView.classList.remove("hidden");
-  formView.classList.add("hidden");
-  savedView.classList.add("hidden");
-  homeButton.classList.add("hidden");
+  randomizeButton.classList.remove('hidden');
+  saveCoverButton.classList.remove('hidden');
+  viewSavedButton.classList.remove('hidden');
+  makeNewButton.classList.remove('hidden');
+  homeView.classList.remove('hidden');
+  formView.classList.add('hidden');
+  savedView.classList.add('hidden');
+  homeButton.classList.add('hidden');
 }
 
 function hideHome() {
-  homeButton.classList.remove("hidden");
-  homeView.classList.add("hidden");
-  randomizeButton.classList.add("hidden");
-  saveCoverButton.classList.add("hidden");
+  homeButton.classList.remove('hidden');
+  homeView.classList.add('hidden');
+  randomizeButton.classList.add('hidden');
+  saveCoverButton.classList.add('hidden');
+}
+
+function validateForm() {
+  if (userCover.value !== '' && userTitle.value !== '' && userDesc1.value !== '' && userDesc2.value !== '') {
+    createNewBookButton.classList.remove('hidden')
+    errorButton.classList.add('hidden')
+  } else {
+    createNewBookButton.classList.add('hidden')
+    errorButton.classList.remove('hidden')
+  }
+}
+
+function showError() {
+  event.preventDefault();
+  alert('You must fill out all fields!')
 }
 
 function createUserCover() {
@@ -100,21 +115,6 @@ function createUserCover() {
   saveUserInputs(currentCover);
   displayNewCover(currentCover);
   showHome();
-}
-
-function validateForm() {
-  if (userCover.value !== "" && userTitle.value !== "" && userDesc1.value !== "" && userDesc2.value !== "") {
-    createNewBookButton.classList.remove('hidden')
-    errorButton.classList.add('hidden')
-  } else {
-    createNewBookButton.classList.add('hidden')
-    errorButton.classList.remove('hidden')
-  }
-}
-
-function showError() {
-  event.preventDefault();
-  alert('You must fill out all fields')
 }
 
 function saveUserInputs(cover) {
@@ -132,12 +132,12 @@ function saveCover() {
 
 function formatSavedCovers() {
   var miniCover =
-  `<div class="entire-mini-cover mini-cover" data-id="${currentCover.id}"><img class="mini-cover" src="${currentCover.cover}"><h2 class="cover-title first-letter">${currentCover.title}</h2><h3 class="tagline">A tale of ${currentCover.tagline1} and ${currentCover.tagline2}</h3></div>`
+  `<div class='entire-mini-cover mini-cover' data-id='${currentCover.id}'><img class='mini-cover' src='${currentCover.cover}'><h2 class='cover-title first-letter'>${currentCover.title}</h2><h3 class='tagline'>A tale of ${currentCover.tagline1} and ${currentCover.tagline2}</h3></div>`
   savedCoversSection.insertAdjacentHTML('afterbegin', miniCover);
 }
 
 function unsaveCover() {
-  var clickedMiniCover = event.target.closest(".entire-mini-cover")
+  var clickedMiniCover = event.target.closest('.entire-mini-cover')
   for (var i = 0; i < savedCovers.length; i++) {
     if (clickedMiniCover.dataset.id == `${savedCovers[i].id}`) {
       savedCovers.splice(i, 1);
