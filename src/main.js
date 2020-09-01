@@ -26,10 +26,7 @@ randomizeButton.addEventListener('click', createRandomCover);
 makeNewButton.addEventListener('click', showForm);
 viewSavedButton.addEventListener('click', showSavedCovers);
 homeButton.addEventListener('click', showHome);
-userCover.addEventListener('keyup', validateForm);
-userTitle.addEventListener('keyup', validateForm);
-userDesc1.addEventListener('keyup', validateForm);
-userDesc2.addEventListener('keyup', validateForm);
+formView.addEventListener('keyup', validateForm)
 createNewBookButton.addEventListener('click', createUserCover)
 errorButton.addEventListener('click', showError);
 saveCoverButton.addEventListener('click', saveCover);
