@@ -92,13 +92,25 @@ function hideHome() {
 //add alert on condition
 
 function validateForm() {
-  if (userCover.value.includes() '' && userTitle.value !== '' && userDesc1.value !== '' && userDesc2.value !== '') {
-    createNewBookButton.disabled = false;
+  if (userCover.value !== '' && userTitle.value !== '' && userDesc1.value !== '' && userDesc2.value !== '') {
+    allowFormSubmission();
+  } else {
+    blockFormSubmission();
   }
 
 }
 
-function handleUserInputs() {
+function allowFormSubmission() {
+  createNewBookButton.classList.remove('hidden');
+  errorButton.classList.add('hidden');
+}
+
+function blockFormSubmission() {
+  errorButton.classList.remove('hidden');
+  createNewBookButton.classList.add('hidden');
+}
+
+function showError() {
   event.preventDefault();
   if (createNewBookButton.disabled === false) {
     createUserCover();
@@ -136,6 +148,7 @@ function clearForm() {
   userTitle.value = '';
   userDesc1.value = '';
   userDesc2.value = '';
+  blockFormSubmission();
 }
 
 function saveCover() {
