@@ -18,10 +18,8 @@ var userTitle = document.querySelector('.user-title');
 var userDesc1 = document.querySelector('.user-desc1');
 var userDesc2 = document.querySelector('.user-desc2');
 
-
 var savedCovers = [];
 var currentCover;
-
 
 window.addEventListener('load', createRandomCover);
 randomizeButton.addEventListener('click', createRandomCover);
@@ -37,14 +35,13 @@ errorButton.addEventListener('click', showError);
 saveCoverButton.addEventListener('click', saveCover);
 savedCoversSection.addEventListener('dblclick', unsaveCover);
 
-
 function createRandomCover() {
   var randomCoverImage = getRandomIndex(covers);
   var randomTitle = getRandomIndex(titles);
   var randomTagline1 = getRandomIndex(descriptors);
   var randomTagline2 = getRandomIndex(descriptors);
   currentCover = new Cover(randomCoverImage, randomTitle, randomTagline1, randomTagline2);
-  displayNewCover(currentCover);
+  displayNewCover();
 }
 
 function getRandomIndex(array) {
@@ -52,11 +49,11 @@ function getRandomIndex(array) {
   return array[randomIndex];
 }
 
-function displayNewCover(cover) {
-  coverTitle.innerText = cover.title;
-  tagline1.innerText = cover.tagline1;
-  tagline2.innerText = cover.tagline2;
-  coverImage.src = cover.cover;
+function displayNewCover() {
+  coverTitle.innerText = currentCover.title;
+  tagline1.innerText = currentCover.tagline1;
+  tagline2.innerText = currentCover.tagline2;
+  coverImage.src = currentCover.cover;
 }
 
 function showForm() {
@@ -143,7 +140,11 @@ function saveCover() {
 
 function formatSavedCovers() {
   var miniCover =
-  `<div class='entire-mini-cover mini-cover' data-id='${currentCover.id}'><img class='mini-cover' src='${currentCover.cover}'><h2 class='cover-title first-letter'>${currentCover.title}</h2><h3 class='tagline'>A tale of ${currentCover.tagline1} and ${currentCover.tagline2}</h3></div>`
+  `<div class='entire-mini-cover mini-cover' data-id='${currentCover.id}'>
+    <img class='mini-cover' src='${currentCover.cover}'>
+    <h2 class='cover-title first-letter'>${currentCover.title}</h2>
+    <h3 class='tagline'>A tale of ${currentCover.tagline1} and ${currentCover.tagline2}</h3>
+  </div>`
   savedCoversSection.insertAdjacentHTML('afterbegin', miniCover);
 }
 
