@@ -109,22 +109,23 @@ function blockFormSubmission() {
 }
 
 function createUserCover() {
+  event.preventDefault();
   var inputCoverImage = userCover.value;
   var inputTitle = userTitle.value;
   var inputTagline1 = userDesc1.value;
   var inputTagline2 = userDesc2.value;
   currentCover = new Cover(inputCoverImage, inputTitle, inputTagline1, inputTagline2);
-  saveUserInputs(currentCover);
+  saveUserInputs();
   displayNewCover();
   clearForm();
   showHome();
 }
 
-function saveUserInputs(cover) {
-  covers.unshift(cover.cover);
-  titles.unshift(cover.title);
-  descriptors.unshift(cover.tagline1);
-  descriptors.unshift(cover.tagline2);
+function saveUserInputs() {
+  covers.unshift(currentCover.cover);
+  titles.unshift(currentCover.title);
+  descriptors.unshift(currentCover.tagline1);
+  descriptors.unshift(currentCover.tagline2);
 }
 
 function showError() {
