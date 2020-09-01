@@ -113,7 +113,7 @@ function createUserCover() {
   var inputTagline2 = userDesc2.value;
   currentCover = new Cover(inputCoverImage, inputTitle, inputTagline1, inputTagline2);
   saveUserInputs(currentCover);
-  displayNewCover(currentCover);
+  displayNewCover();
   clearInputs();
   showHome();
 }
@@ -121,7 +121,8 @@ function createUserCover() {
 function saveUserInputs(cover) {
   covers.unshift(cover.cover);
   titles.unshift(cover.title);
-  descriptors.splice(0, 0, cover.tagline1, cover.tagline2);
+  descriptors.unshift(cover.tagline1);
+  descriptors.unshift(cover.tagline2);
 }
 
 function clearInputs() {
@@ -158,6 +159,6 @@ function unsaveCover() {
   }
 }
 
-function removeMiniCover(cover) {
-  cover.remove();
+function removeMiniCover(clickedMiniCover) {
+  clickedMiniCover.remove();
 }
