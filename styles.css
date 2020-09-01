@@ -35,7 +35,6 @@ body {
 .controls > button:hover {
   background: #e07999;
   color: white;
-  cursor: alias;
 }
 
 /* ~~~~~~~~~~~~~~ HOME ~~~~~~~~~~~~~~~~ */
@@ -59,6 +58,7 @@ body {
   color: #f4ebcd;
   position: absolute;
   width: 100%;
+  text-shadow: 3px 3px 2px black;
 }
 
 .cover-title {
@@ -133,6 +133,18 @@ body {
   padding: 5px;
 }
 
+@media(max-width: 1000px) {
+  .mini-cover > .cover-title {
+    font-size: 25px;
+  }
+  .mini-cover > .cover-title::first-letter {
+    font-size: 40px;
+  }
+  .mini-cover > .tagline {
+    font-size: 6px;
+  }
+}
+
 /* ~~~~~~~~~~~~~ NEW COVER FORM ~~~~~~~~~~~~~~~ */
 form {
   display: flex;
@@ -164,8 +176,4 @@ form > button {
 form > button:hover {
   background: #e07999;
   color: white;
-}
-
-.error-button {
-  opacity: .5;
 }
