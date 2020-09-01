@@ -8,7 +8,6 @@ var saveCoverButton = document.querySelector('.save-cover-button');
 var homeButton = document.querySelector('.home-button');
 var viewSavedButton = document.querySelector('.view-saved-button');
 var createNewBookButton = document.querySelector('.create-new-book-button');
-var errorButton = document.querySelector('.error-button');
 var homeView = document.querySelector('.home-view');
 var formView = document.querySelector('.form-view');
 var savedView = document.querySelector('.saved-view');
@@ -30,8 +29,7 @@ userCover.addEventListener('keyup', validateForm);
 userTitle.addEventListener('keyup', validateForm);
 userDesc1.addEventListener('keyup', validateForm);
 userDesc2.addEventListener('keyup', validateForm);
-createNewBookButton.addEventListener('click', createUserCover);
-errorButton.addEventListener('click', showError);
+createNewBookButton.addEventListener('click', handleUserInputs)
 saveCoverButton.addEventListener('click', saveCover);
 savedCoversSection.addEventListener('dblclick', unsaveCover);
 
@@ -90,27 +88,27 @@ function hideHome() {
   saveCoverButton.classList.add('hidden');
 }
 
-//remove invalid button from html css
 //create one event listener on keyup
-//add disable class or whatever on condition
 //add alert on condition
-//disable button after form is successfully submitted
 
 function validateForm() {
-  if (userCover.value !== '' && userTitle.value !== '' && userDesc1.value !== '' && userDesc2.value !== '') {
+  if (userCover.value.includes() '' && userTitle.value !== '' && userDesc1.value !== '' && userDesc2.value !== '') {
     createNewBookButton.disabled = false;
-  } else {
+  }
 
+}
+
+function handleUserInputs() {
+  event.preventDefault();
+  if (createNewBookButton.disabled === false) {
+    createUserCover();
+  } else {
+    console.log("hello");
   }
 }
 
-function showError() {
-  event.preventDefault();
-  alert('You must fill out all fields!');
-}
 
 function createUserCover() {
-  event.preventDefault();
   var inputCoverImage = userCover.value;
   var inputTitle = userTitle.value;
   var inputTagline1 = userDesc1.value;
@@ -118,7 +116,7 @@ function createUserCover() {
   currentCover = new Cover(inputCoverImage, inputTitle, inputTagline1, inputTagline2);
   saveUserInputs(currentCover);
   displayNewCover();
-  clearInputs();
+  clearForm();
   showHome();
 }
 
@@ -129,7 +127,11 @@ function saveUserInputs(cover) {
   descriptors.unshift(cover.tagline2);
 }
 
-function clearInputs() {
+function showError() {
+  alert('You must fill out all fields!');
+}
+
+function clearForm() {
   userCover.value = '';
   userTitle.value = '';
   userDesc1.value = '';
