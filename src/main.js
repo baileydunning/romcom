@@ -80,11 +80,19 @@ function showForm() {
 }
 
 function validateForm() {
-  var acceptedTypes = ["jpg", "jpeg", "png", "svg"];
-  if (userCover.value !== '' && userTitle.value !== '' && userDesc1.value !== '' && userDesc2.value !== '') {
+  if (userCover.value !== '') {
+    checkImageURL(url)
+  }
+  if (userTitle.value !== '' && userDesc1.value !== '' && userDesc2.value !== '') {
     allowFormSubmission();
   } else {
     blockFormSubmission();
+  }
+}
+
+function checkImageURL(url) {
+  if (!url.includes("jpg" || "jpeg" || "png")) {
+    alert("Not a valid image link")
   }
 }
 

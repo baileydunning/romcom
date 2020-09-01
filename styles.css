@@ -182,7 +182,6 @@ form > button:hover {
   opacity: .5;
 }
 
-.required
-{
-    color: red;
-}
+/* .required {
+  color: red;
+} */
