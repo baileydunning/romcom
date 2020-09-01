@@ -92,12 +92,20 @@ function hideHome() {
 
 function validateForm() {
   if (userCover.value !== '' && userTitle.value !== '' && userDesc1.value !== '' && userDesc2.value !== '') {
-    createNewBookButton.classList.remove('hidden');
-    errorButton.classList.add('hidden');
+    allowFormSubmission();
   } else {
-    errorButton.classList.remove('hidden');
-    createNewBookButton.classList.add('hidden');
+    blockFormSubmission();
   }
+}
+
+function allowFormSubmission() {
+  createNewBookButton.classList.remove('hidden');
+  errorButton.classList.add('hidden');
+}
+
+function blockFormSubmission() {
+  errorButton.classList.remove('hidden');
+  createNewBookButton.classList.add('hidden');
 }
 
 function showError() {
@@ -130,6 +138,7 @@ function clearInputs() {
   userTitle.value = '';
   userDesc1.value = '';
   userDesc2.value = '';
+  blockFormSubmission();
 }
 
 function saveCover() {
