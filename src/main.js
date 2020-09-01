@@ -8,6 +8,7 @@ var saveCoverButton = document.querySelector('.save-cover-button');
 var homeButton = document.querySelector('.home-button');
 var viewSavedButton = document.querySelector('.view-saved-button');
 var createNewBookButton = document.querySelector('.create-new-book-button');
+var errorButton = document.querySelector('.error-button');
 var homeView = document.querySelector('.home-view');
 var formView = document.querySelector('.form-view');
 var savedView = document.querySelector('.saved-view');
@@ -29,7 +30,8 @@ userCover.addEventListener('keyup', validateForm);
 userTitle.addEventListener('keyup', validateForm);
 userDesc1.addEventListener('keyup', validateForm);
 userDesc2.addEventListener('keyup', validateForm);
-createNewBookButton.addEventListener('click', handleUserInputs)
+createNewBookButton.addEventListener('click', createUserCover)
+errorButton.addEventListener('click', showError);
 saveCoverButton.addEventListener('click', saveCover);
 savedCoversSection.addEventListener('dblclick', unsaveCover);
 
@@ -88,16 +90,12 @@ function hideHome() {
   saveCoverButton.classList.add('hidden');
 }
 
-//create one event listener on keyup
-//add alert on condition
-
 function validateForm() {
   if (userCover.value !== '' && userTitle.value !== '' && userDesc1.value !== '' && userDesc2.value !== '') {
     allowFormSubmission();
   } else {
     blockFormSubmission();
   }
-
 }
 
 function allowFormSubmission() {
@@ -109,16 +107,6 @@ function blockFormSubmission() {
   errorButton.classList.remove('hidden');
   createNewBookButton.classList.add('hidden');
 }
-
-function showError() {
-  event.preventDefault();
-  if (createNewBookButton.disabled === false) {
-    createUserCover();
-  } else {
-    console.log("hello");
-  }
-}
-
 
 function createUserCover() {
   var inputCoverImage = userCover.value;
@@ -140,6 +128,7 @@ function saveUserInputs(cover) {
 }
 
 function showError() {
+  event.preventDefault();
   alert('You must fill out all fields!');
 }
 
