@@ -177,7 +177,3 @@ form > button:hover {
   background: #e07999;
   color: white;
 }
-
-.error-button {
-  opacity: .5;
-}
