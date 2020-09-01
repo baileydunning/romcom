@@ -2,7 +2,7 @@ var coverTitle = document.querySelector('.cover-title');
 var coverImage = document.querySelector('.cover-image');
 var tagline1 = document.querySelector('.tagline-1');
 var tagline2 = document.querySelector('.tagline-2');
-var randomizeButton = document.querySelector('.random-cover-button');
+var randomCoverButton = document.querySelector('.random-cover-button');
 var makeNewButton = document.querySelector('.make-new-button');
 var saveCoverButton = document.querySelector('.save-cover-button');
 var homeButton = document.querySelector('.home-button');
@@ -22,7 +22,7 @@ var savedCovers = [];
 var currentCover;
 
 window.addEventListener('load', createRandomCover);
-randomizeButton.addEventListener('click', createRandomCover);
+randomCoverButton.addEventListener('click', createRandomCover);
 makeNewButton.addEventListener('click', showForm);
 viewSavedButton.addEventListener('click', showSavedCovers);
 homeButton.addEventListener('click', showHome);
@@ -31,6 +31,24 @@ createNewBookButton.addEventListener('click', createUserCover)
 errorButton.addEventListener('click', showError);
 saveCoverButton.addEventListener('click', saveCover);
 savedCoversSection.addEventListener('dblclick', unsaveCover);
+
+function showHome() {
+  randomCoverButton.classList.remove('hidden');
+  saveCoverButton.classList.remove('hidden');
+  viewSavedButton.classList.remove('hidden');
+  makeNewButton.classList.remove('hidden');
+  homeView.classList.remove('hidden');
+  formView.classList.add('hidden');
+  savedView.classList.add('hidden');
+  homeButton.classList.add('hidden');
+}
+
+function hideHome() {
+  homeButton.classList.remove('hidden');
+  homeView.classList.add('hidden');
+  randomCoverButton.classList.add('hidden');
+  saveCoverButton.classList.add('hidden');
+}
 
 function createRandomCover() {
   var randomCoverImage = getRandomIndex(covers);
@@ -59,35 +77,10 @@ function showForm() {
   savedView.classList.add('hidden');
   makeNewButton.classList.add('hidden');
   hideHome();
-  }
-
-function showSavedCovers() {
-  savedView.classList.remove('hidden');
-  makeNewButton.classList.remove('hidden');
-  formView.classList.add('hidden');
-  viewSavedButton.classList.add('hidden');
-  hideHome();
-}
-
-function showHome() {
-  randomizeButton.classList.remove('hidden');
-  saveCoverButton.classList.remove('hidden');
-  viewSavedButton.classList.remove('hidden');
-  makeNewButton.classList.remove('hidden');
-  homeView.classList.remove('hidden');
-  formView.classList.add('hidden');
-  savedView.classList.add('hidden');
-  homeButton.classList.add('hidden');
-}
-
-function hideHome() {
-  homeButton.classList.remove('hidden');
-  homeView.classList.add('hidden');
-  randomizeButton.classList.add('hidden');
-  saveCoverButton.classList.add('hidden');
 }
 
 function validateForm() {
+  var acceptedTypes = ["jpg", "jpeg", "png", "svg"];
   if (userCover.value !== '' && userTitle.value !== '' && userDesc1.value !== '' && userDesc2.value !== '') {
     allowFormSubmission();
   } else {
@@ -155,8 +148,16 @@ function formatSavedCovers() {
   savedCoversSection.insertAdjacentHTML('afterbegin', miniCover);
 }
 
+function showSavedCovers() {
+  savedView.classList.remove('hidden');
+  makeNewButton.classList.remove('hidden');
+  formView.classList.add('hidden');
+  viewSavedButton.classList.add('hidden');
+  hideHome();
+}
+
 function unsaveCover() {
-  var clickedMiniCover = event.target.closest('.entire-mini-cover')
+  var clickedMiniCover = event.target.closest('.entire-mini-cover');
   for (var i = 0; i < savedCovers.length; i++) {
     if (clickedMiniCover.dataset.id == `${savedCovers[i].id}`) {
       savedCovers.splice(i, 1);
