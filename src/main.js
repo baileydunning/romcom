@@ -90,13 +90,17 @@ function hideHome() {
   saveCoverButton.classList.add('hidden');
 }
 
+//remove invalid button from html css
+//create one event listener on keyup
+//add disable class or whatever on condition
+//add alert on condition
+//disable button after form is successfully submitted
+
 function validateForm() {
   if (userCover.value !== '' && userTitle.value !== '' && userDesc1.value !== '' && userDesc2.value !== '') {
-    createNewBookButton.classList.remove('hidden');
-    errorButton.classList.add('hidden');
+    createNewBookButton.disabled = false;
   } else {
-    errorButton.classList.remove('hidden');
-    createNewBookButton.classList.add('hidden');
+
   }
 }
 
