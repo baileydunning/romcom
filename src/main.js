@@ -80,7 +80,7 @@ function showForm() {
 }
 
 function validateForm() {
-  if ((userCover.value.includes("jpg" || "jpeg" || "png" || "svg")) && userTitle.value !== '' && userDesc1.value !== '' && userDesc2.value !== '') {
+  if ((userCover.value.includes('jpg' || 'jpeg' || 'png' || 'svg')) && userTitle.value !== '' && userDesc1.value !== '' && userDesc2.value !== '') {
     allowFormSubmission();
   } else {
     blockFormSubmission();
