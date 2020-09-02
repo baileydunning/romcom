@@ -50,6 +50,11 @@ function hideHome() {
   saveCoverButton.classList.add('hidden');
 }
 
+function getRandomIndex(array) {
+  var randomIndex = Math.floor(Math.random() * array.length);
+  return array[randomIndex];
+}
+
 function createRandomCover() {
   var randomCoverImage = getRandomIndex(covers);
   var randomTitle = getRandomIndex(titles);
@@ -57,11 +62,6 @@ function createRandomCover() {
   var randomTagline2 = getRandomIndex(descriptors);
   currentCover = new Cover(randomCoverImage, randomTitle, randomTagline1, randomTagline2);
   displayNewCover();
-}
-
-function getRandomIndex(array) {
-  var randomIndex = Math.floor(Math.random() * array.length);
-  return array[randomIndex];
 }
 
 function displayNewCover() {
@@ -80,8 +80,7 @@ function showForm() {
 }
 
 function validateForm() {
-  var acceptedTypes = ["jpg", "jpeg", "png", "svg"];
-  if (userCover.value !== '' && userTitle.value !== '' && userDesc1.value !== '' && userDesc2.value !== '') {
+  if ((userCover.value.includes('jpg' || 'jpeg' || 'png' || 'svg')) && userTitle.value !== '' && userDesc1.value !== '' && userDesc2.value !== '') {
     allowFormSubmission();
   } else {
     blockFormSubmission();
@@ -120,7 +119,7 @@ function saveUserInputs() {
 
 function showError() {
   event.preventDefault();
-  alert('You must fill out all fields!');
+  alert('You must fill out all fields and insert a valid image link!');
 }
 
 function clearForm() {
