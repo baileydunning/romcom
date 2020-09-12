@@ -15,10 +15,10 @@ This was a paired project where we built out a RomCom book cover generator. The 
 
 ![ezgif-4-249a752e9dc6](https://user-images.githubusercontent.com/67710155/91666216-47573100-eab8-11ea-82b4-177b437f7dca.gif)
 
-## Programming Languages Uses
+## Programming Languages Used
 * JavaScript
-* HTML (provided by boilerplate)
-* CSS (provided by boilerplate)
+* HTML
+* CSS
 
 ## Learning Goals
 * Expand our understanding of the DOM (Document Object Model) and how it differs from updating the data model
